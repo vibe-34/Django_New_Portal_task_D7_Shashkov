@@ -1,0 +1,55 @@
+{% extends 'new_portal/default.html'%}
+
+{% load custom_filters %}
+
+{% load custom_tags %}<!--Импортируем модуль с нашим тегом из custom_tags.py-->
+
+{% block title %}Поиск публикации{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Поиск публикации</h1>
+        <form action="" method="get">
+            {% csrf_token %}
+           <!--Переменная, которую мы передали через контекст, генерирует нам форму с полями-->
+           {{ filter.form.as_p }}
+           <!--Добавим кнопку отправки данных формы-->
+           <input type="submit" value="Найти" />
+        </form>
+        {% if record %}
+            {% for el in record %}
+                <div class="alert alert-warning">
+                    <h3>{{ el.title|censorship }}</h3>
+                    <p>{{ el.full_text|censorship|truncatechars:20 }}</p>
+                    <p>{{ el.data|date:'d.M.Y' }}</p>
+                    <a href="{% url 'news_id' el.id %}" class="btn btn-warning">Читать полностью</a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> Новоcтей нет!</p>
+        {% endif %}
+
+        <!--Добавляем пагинацию на страницу-->
+
+       <!--Информация о предыдущих страницах-->
+       {% if page_obj.has_previous %}
+           <a href="?{% url_replace page=1 %}">1</a>
+           {% if page_obj.previous_page_number != 1 %}
+               ...
+               <a href="?{% url_replace page=page_obj.previous_page_number %}">{{ page_obj.previous_page_number }}</a>
+           {% endif %}
+       {% endif %}
+
+       <!--Информация о текущей странице-->
+       {{ page_obj.number }}
+
+       <!--Информация о следующих страницах-->
+       {% if page_obj.has_next %}
+           <a href="?{% url_replace page=page_obj.next_page_number %}">{{ page_obj.next_page_number }}</a>
+           {% if paginator.num_pages != page_obj.next_page_number %}
+               ...
+               <a href="?{% url_replace page=page_obj.paginator.num_pages %}">{{ page_obj.paginator.num_pages }}</a>
+           {% endif %}
+       {% endif %}
+    </div>
+{% endblock %}

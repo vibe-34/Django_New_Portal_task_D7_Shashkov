@@ -1,0 +1,77 @@
+body{
+    background: #2c2c2c;               /*фон заднего фона*/
+}
+
+aside {                                /*для блока aside*/
+    float: left;                       /*расположение блока, слева*/
+    background: #181818;               /*фон заднего фона*/
+    width: 20%;                        /*ширина блока 20%*/
+    padding: 2.5%;                     /*внутренние отступы по 2.5% со всех сторон*/
+    height: 100vmax;                   /*высота данного блока будет динамической и 100% экрана*/
+    color: #fff;                       /*весь текст внутри этого блока будет белый (#fff)*/
+    border-right: 5px solid #4d4d4d;   /*обводка по правой стороне 5px сплошная и цвет (#4d4d4d)*/
+}
+
+aside img {                            /*для картинки в блоке aside*/
+    width: 80px;                       /*ширина 80px*/
+    float: left;                       /*позиционирование слева*/
+}
+
+aside .logo{                           /*для блока aside и к тегу span в котором есть class=logo*/
+    font-size: 39px;                   /*размер шрифта 39px*/
+    margin-left: 10px;                 /*отступ с левой стороны 10px*/
+    font-weight: bold;                 /*жирность шрифта*/
+    position: relative;                /*смещаем логотип (NEW auto BASS)*/
+    top: 10px;                         /*опускаем вниз на 10px*/
+}
+
+aside h3{                              /*для блока aside к тегу h3*/
+    margin-top: 50px;                  /*отступ сверху 50px*/
+    font-weight: 28px;                 /*размер шрифта 28px*/
+}
+
+aside ul {list-style: none}            /*для блока aside тега ul(всей нашей навигации)-стили применяться не будут*/
+
+aside ul li a {                       /*для блока aside тега li: и тега a:*/
+    color: #fff                       /*цвет каждого элемента навигации (#fff)-белый*/
+}
+
+aside ul li {                          /*для тега aside к тегу li и к каждому элементу внутри этого списка*/
+    dysplay: block;                    /*каждый элемент будет блочным*/
+    margin-top: 20px;                  /*отступ сверху 20px*/
+    transition: transform .6s ease;    /*для всех элементов плавность наведения с задержкой в 0.6 секунды*/
+}
+
+aside ul li:hover, aside ul a:hover {  /*для эффекта при наведении на тег li: и на тег a: через псевдо класс hover'*/
+    color: #eb5959;                    /*цвет при наведении - #eb5959 */
+    text-decoration: none;             /*удаление нижнего подчеркивания*/
+    transform: scale(1.05);            /*увеличение текста при наведении на 5%*/
+}
+
+main .features{                        /*для тега main и классу features*/
+    float: left;                       /*позиционирование слева*/
+    color: #fff;                       /*цвет текста #fff - белый*/
+    margin-top: 50px;                  /*отступ сверху 50px*/
+    text-align: center;                /*расположение текста по центру*/
+    width: 75%;                        /*ширина блока 75%*/
+}
+
+/*для тега main и классу features и тегу h1-размер шрифта 50*/
+main .features h1 {font-size: 50px;}
+
+/*и тегу p: макс ширина 600: доп отступ сверху и снизу 20: по бокам отступ выставляется автоматом*/
+main .features p {max-width: 600px; margin: 20px auto;}
+
+.alert-warning {
+    float: left;
+    clear: both;
+    width: 400px;
+    margin: 20px 34%;
+    text-align: left;
+}
+
+form {                                /*для тега form*/
+    margin-left: 32%;                 /*отступ слева 32%*/
+    width: 500px;                     /*ширина 500px*/
+    margin-top: 50px;                 /*отступ сверху 50рх*/
+}

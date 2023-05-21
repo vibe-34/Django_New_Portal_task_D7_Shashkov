@@ -1,0 +1,15 @@
+<!-- наследуемся от default.html из папки new_portal -->
+{% extends 'new_portal/default.html'%}
+
+<!-- в block title передаем: Главная страница -->
+{% block title %}Про нас{% endblock %}
+
+<!-- в block content передаем: Главная страница -->
+{% block content %}
+    <div class="features">
+        <h1>{{ title }}</h1>
+        <p>
+           Студия автозвука и шумоизоляции, магазин по продаже автомобильной акустики и аксессуаров. Все права защищены.
+        </p>
+    </div>
+{% endblock %}
