@@ -190,3 +190,10 @@ ADMINS = (
 APSCHEDULER_DATETIME_FORMAT = 'N j, Y, f:s a'  # формат в котором будет выполняться рассылка
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # за сколько секунд наша функция должна выполниться
 
+# Если вы используете Redis Labs, то переменные CELERY_BROKER_URL и CELERY_RESULT_BACKEND должны строиться по шаблону:
+# redis://логин:пароль@endpoint:port где endpoint и port вы также берёте из настроек Redis Labs.
+CELERY_BROKER_URL = 'redis://localhost:6379'  # указывает на URL брокера сообщений (Redis). По умолчанию он находится на порту 6379
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'  # указывает на хранилище результатов выполнения задач
+CELERY_ACCEPT_CONTENT = ['application/json']  # допустимый формат данных
+CELERY_TASK_SERIALIZER = 'json'  # метод сериализации задач
+CELERY_RESULT_SERIALIZER = 'json'  # метод сериализации результатов
