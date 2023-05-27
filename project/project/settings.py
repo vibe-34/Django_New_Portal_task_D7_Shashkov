@@ -164,8 +164,8 @@ ACCOUNT_FORMS = {'signup': 'accounts.forms.CustomSignupForm'}  # Указали 
 # ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1  # хранит количество дней, когда доступна ссылка на подтверждение регистрации
 
 # Настройки почты
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # для отправки писем на реальные почтовые адреса
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Для тестирования, печать писем в консоль.
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # для отправки писем на реальные почтовые адреса
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Для тестирования, печать писем в консоль.
 EMAIL_HOST = 'smtp.yandex.ru'                                # хост почтового сервера
 EMAIL_PORT = 465                                             # порт, на который почтовый сервер принимает письма
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')          # логин пользователя почтового сервера
@@ -197,3 +197,5 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379'  # указывает на хр
 CELERY_ACCEPT_CONTENT = ['application/json']  # допустимый формат данных
 CELERY_TASK_SERIALIZER = 'json'  # метод сериализации задач
 CELERY_RESULT_SERIALIZER = 'json'  # метод сериализации результатов
+# CELERY_TIMEZONE = 'Europe/Mosсow'
+CELERY_ENABLE_UTC = False  # в состоянии True, задача по времени не стартовала, работала только в режиме 'каждую минуту'
