@@ -15,7 +15,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.autodiscover_tasks()  # указываем Celery автоматически искать задания в файлах tasks.py каждого приложения проекта
 
-# отправка уведомления при каждой новой публикации
+# отправка уведомления при каждой новой публикации (плохой вариант реализации)  # TODO
 # app.conf.beat_schedule = {
 #     'send_notifications_when_a_new_post_is_created': {
 #         'task': 'news.tasks.with_every_new_post',

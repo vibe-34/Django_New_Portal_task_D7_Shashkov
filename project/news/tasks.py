@@ -20,9 +20,7 @@ from news.models import Category, Subscription, Record
 #         subscribers_email = category.subscribers.all()  # получаем всех подписчиков у этой категории
 #         for sub_user in subscribers_email:  # проходимся по всем подписчикам этой категории
 #             subscribers_emails.append(sub_user.email)  # на каждой итерации забираем емайл и кладем его в пустой список
-
-
-    # здесь нужно выполнить рассылку
+# далее, здесь нужно выполнить рассылку
 
 @shared_task
 def with_every_new_post(preview, pk, title, emails, instance):
@@ -44,23 +42,6 @@ def with_every_new_post(preview, pk, title, emails, instance):
         msg = EmailMultiAlternatives(subject, text_content, None, [email])
         msg.attach_alternative(html_content, "text/html")
         msg.send()
-
-# @shared_task
-# def with_every_new_post(preview, pk, title, subscribers):                                                                    # отдельно делаем функцию отправки сообщения о новом посте для подписчика
-#     html_content = render_to_string(
-#         'post_created_email.html',
-#         {
-#             'text': preview,
-#             'link': f'{settings.SITE_URL}/post/{pk}'  # http://127.0.0.1:8000/post/pk
-#         }
-#     )
-#     msg = EmailMultiAlternatives(subject=title, body='', from_email=settings.DEFAULT_FROM_EMAIL, to=subscribers)
-#     msg.attach_alternative(html_content, "text/html")
-#     msg.send()
-
-
-
-
 
 # @shared_task
 # def with_every_new_post():
