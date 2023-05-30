@@ -16,7 +16,12 @@ def record_created(sender, instance, created, **kwargs):
         emails = list(User.objects.filter(subscriptions__category=instance.category).values_list('email', flat=True))
 
         # вызываем нашу таску и передаем ей необходимые аргументы
-        with_every_new_post.delay(instance.preview(), instance.title, emails, instance.get_absolute_url(),)
+        with_every_new_post.delay(instance.category.title,
+                                  instance.preview(),
+                                  instance.title,
+                                  emails,
+                                  instance.get_absolute_url(),
+                                  )
 
 
 # ф-я выполнятся при создании объекта модели Record

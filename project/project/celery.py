@@ -16,7 +16,7 @@ app.autodiscover_tasks()  # указываем Celery автоматически
 app.conf.beat_schedule = {
     'send_notification_every_monday_8am': {
         'task': 'news.tasks.weekly_newsletter',
-        'schedule': crontab(hour=19, minute=40, day_of_week='tuesday'),
+        'schedule': crontab(hour=21, minute=50, day_of_week='tuesday'),
     },
 }
 

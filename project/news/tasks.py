@@ -8,7 +8,7 @@ from news.models import Category, Subscription
 
 
 @shared_task
-def with_every_new_post(preview, title, emails, get_absolute_url):
+def with_every_new_post(category, preview, title, emails, get_absolute_url):
     """Вызывается в сигнале, при создании новой публикации и выполняет рассылку всем подписчикам категории."""
 
     subject = f'Новая запись в категории {category}'
